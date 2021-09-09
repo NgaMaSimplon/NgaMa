@@ -1,0 +1,124 @@
+from app.home import blueprint
+from flask import render_template, redirect, url_for, request
+from flask_login import login_required, current_user
+from app import login_manager
+from jinja2 import TemplateNotFound
+from joblib import load
+from vacances_scolaires_france import SchoolHolidayDates
+import datetime
+
+d = SchoolHolidayDates()
+
+zoneA = [
+    '03','15', '43', '63','07', '26', '38', '73', '74', '01', '42', '69', '25', '39', '70','90', '21',
+    '58', '71', '89', '24', '33', '40', '47', '64', '19', '23', '87', '16', '17', '79', '86'
+] 
+
+zoneB =  [
+    '22','29','35','56', '18', '28', '36', '37', '41', '45', '54', '55','57', '88','08', '10','51', '52','67','68', '02', '60',
+    '80', '59', '62', '14','50', '61', '27', '76', '975', '44', '49', '53', '72', '85', '04', '05', '13', '84', '06', '83'
+    ]
+
+zoneC = ['77', '93', '94', '75', '78', '91', '92', '95', '11', '30', '34','48', '66', '09', '12', '31', '32', '46', '65', '81', '82']
+
+zoneAUTRE = ['2A', '2B', '971', '977', '978', '972', '974', '976', '986', '987', '988', '973']
+
+
+@blueprint.route('/index')
+def index():
+
+    return render_template('index.html', segment='index')
+
+@blueprint.route('/predict', methods=['GET', 'POST'])
+def predict():
+    
+    dep = request.form['input-dep']
+    agg = int(request.form['input-agg'])
+    atm = int(request.form['input-atm'])
+    lum = int(request.form['input-lum'])
+    date = request.form['input-date']
+    cat_time = int(request.form['input-time'])
+
+    date = datetime.date(int(date[6:10]), int(date[3:5]), int(date[0:2]))
+
+    dic_jours = {
+        0:"Monday",
+        1:"Tuesday",
+        2:"Wednesday",
+        3:"Thursday",
+        4:"Friday",
+        5:"Saturday",
+        6:"Sunday"
+    }
+
+    journee = date.weekday()
+    journee = dic_jours[journee]
+
+    if dep in zoneA: 
+        zone='A'
+        vac = str(d.is_holiday_for_zone(date,zone))
+    elif dep in zoneB: 
+        zone='B'
+        vac = str(d.is_holiday_for_zone(date,zone))
+    elif dep in zoneC: 
+        zone='C'
+        vac = str(d.is_holiday_for_zone(date,zone))
+    else:
+        vac='AUTRE'
+    
+    # ["lum", "agg", "atm", "cat_time", "journee", "vac"]
+    model = load('app/base/static/secours1.joblib')
+
+    prediction = model.predict([[lum,agg,atm,cat_time,journee,vac]])[0]
+    print(prediction)
+
+    return render_template('predict.html', prediction=prediction)
+
+
+    ---------------------------------------------------------------------------------
+
+
+
+    {% extends 'base.html' %}
+{% block title %}Formulaire{% endblock %}
+{% block section %}
+
+	   
+	<section>
+	<div class="formulaire">
+		<form action="{{url_for('main.predict')}}" method="post"> 
+		   <div>
+				<div>
+		        <br><label for="dep">Votre Département : </label>
+		        <input type="number" id="dep" name="dep">
+				</div>
+		        <label for="agg">Localisation : </label>
+		        <input type="number" id="agg" name="agg">
+				</div>
+				<div>
+		        <br><label for="atm">Condition Atmospherique : </label>
+		        <input type="number" id="atm" name="atm">
+				</div>
+				<div>
+		        <label for="lum">Luminosité : </label>
+		        <input type="number" id="lum" name="lum">
+				</div>
+				<div>
+		        <label for="date">date : </label>
+		        <input type="text" id="date" name="date">
+				</div>
+				<div>
+				<label for="cat_time">categorie du temps : </label>
+				<input type="number" id="cat_time" name="cat_time">
+				</div>
+				
+			
+		   
+	<br><input type="submit" value="Envoyer"  action="{{url_for('main.predict')}}" method="get"/>
+		</div>
+	</div>
+		</form>
+	
+	</section>
+{% endblock %}
+	

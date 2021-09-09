@@ -1,0 +1,31 @@
+{
+    "theme_color": "#f38621",
+    "background_color": "#f38621",
+    "display": "minimal-ui",
+    "start_url": "/",
+    "name": "NgaMa",
+    "short_name": "NgaMa",
+    "description": "secours",
+    "icons": [
+        {
+            "src": "/static/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/static/icon-256x256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "/static/icon-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "src": "/static/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

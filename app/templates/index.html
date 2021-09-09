@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}accueil{% endblock %}
+{% block section %}
+
+<section>
+	
+	<div style class='truc'>
+		<div style class='machin'>
+			<img src="{{url_for('static', filename='img/fond.png')}}"  width = "100%"> 
+		</div>
+		<div style class='bidule'>
+			<strong><h3>Ngama</h3></strong>
+			<p class="din">
+			
+	Nous sommes là pour vous aider à prévoir le risque d'accident, nous avons séparé le risque 
+		en 3 points.
+		Cliquez sur le lien estimation des risques pour obtenir une prévision des risques en fonction du moment désiré.
+	</p> 
+			<div>
+		   <p class="dingue">	<br>
+		1 – vert   
+		<br>
+		2 – orange 
+		<br> 
+		3 – rouge  
+		</p>
+		   
+			</div>
+		 </div> 
+	 </div>
+	</section>
+
+{% endblock %}	  
+		
+

@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% block title %}Formulaire{% endblock %}
+{% block section %}
+
+	   
+	<section>
+
+		<br>
+		<strong>
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+			<div class="col-md-8">
+				<form action="{{url_for('main.predict')}}" method="post">
+					<div class="form-group row">
+					<label for="dep" class="col-sm-2 col-form-label">Votre Département </label>
+					<div class="col-sm-10">
+						<input type="number" class="form-control" id="dep"  placeholder="Département" name="dep" min="1"  required>
+					</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="atm" class="col-sm-2 col-form-label">Luminosité</label>
+						<div class="col-sm-10">
+						<select required class="custom-select mr-sm-2" id="lum" name="lum">
+							<option disabled selected value="">Choisissez un niveau de luminosité</option>
+							<option value="1">1 – Plein jour</option>
+							<option value="2">2 – Crépuscule ou aube</option>
+							<option value="3">3 – Nuit sans éclairage public</option>
+							<option value="4">4 – Nuit avec éclairage public non allumé</option>
+							<option value="5">5 – Nuit avec éclairage public allumé</option>
+							</select>
+						</div>
+					</div>
+					
+					<fieldset class="form-group">
+						<div class="row">
+						<legend class="col-form-label col-sm-2 pt-0">Localisation</legend>
+						<div class="col-sm-10">
+							<div class="form-check">
+							<input class="form-check-input" type="radio" name="agg" id="gridRadios2" value="1"  required>
+							<label class="form-check-label" for="agg">
+								En agglomération
+							</label>
+							</div>
+							<div class="form-check">
+							<input class="form-check-input" type="radio" name="agg" id="gridRadios2" value="2"  required>
+							<label class="form-check-label" for="agg">
+								Hors agglomération
+							</label>
+							</div>
+						</div>
+						</div>
+					</fieldset>
+					<div class="form-group row">
+					<label for="atm" class="col-sm-2 col-form-label">Condition Atmospherique</label>
+					<div class="col-sm-10">
+						<select required class="custom-select mr-sm-2" id="atm" name="atm">
+							<option disabled selected value="">Choisissez un atmospherique...</option>
+							<option value="1">1 – Normale</option>
+							<option value="2">2 – Pluie légère</option>
+							<option value="3">3 – Pluie forte</option>
+							<option value="4">4 – Neige - grêle</option>
+							<option value="5">5 – Brouillard - fumée</option>
+							<option value="6">6 – Vent fort - tempête</option>
+							<option value="7">7 – Temps éblouissant</option>
+							<option value="8">8 – Temps couvert  </option>
+							<option value="9">9 – Autre</option>
+						</select>
+					</div>
+					</div>
+					<div class="form-group row">
+						<label for="date" class="col-sm-2 col-form-label">Date </label>
+						<div class="col-sm-10">
+						<input type="date" class="form-control" id="date" name="date" placeholder="dd/mm/yyyy"  required>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="cat_time" class="col-sm-2 col-form-label">Période</label>
+						<div class="col-sm-10">
+						<select class="custom-select mr-sm-2" id="cat_time" name="cat_time"  required>
+							<option disabled selected value="">Choisissez un créneau horaire...</option>
+							<option value="1">08:00 - 17:00</option>
+							<option value="2">17:00 - 20:00</option>
+							<option value="3">20:00 - 00:00</option>
+							<option value="4">00:00 - 05:00</option>
+							<option value="5">05:00 - 08:00</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="form-group row">
+					<div class="col-sm-10">
+						<button type="submit" class="btn btn-primary">Predire</button>
+					</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</strong>
+	</section>
+{% endblock %}
+	
+
+
