@@ -7,13 +7,9 @@ import matplotlib.pyplot as plt
 import ssl
 import pyautogui
 
-#client = MongoClient("mongodb+srv://marie:Tablesimplon06@cluster0.h2acd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", ssl_cert_reqs=ssl.CERT_NONE)
-#db = 
-
-
 
 def predict(dep,agg, atm, lum, date, cat_time, journee, vacances):    
-    model = load('app/static/pro.joblib')
+    model = load('app/static/visa.joblib')
     secours = model.predict([[dep,agg, atm, lum, date, cat_time, journee, vacances]])
     return secours
 	

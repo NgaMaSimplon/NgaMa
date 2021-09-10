@@ -11,6 +11,7 @@ header{
     grid-area: "header";
    
 }
+
 .titre{
     color: rgb(98, 89, 79);
     margin-left:5%;
@@ -20,7 +21,7 @@ header{
 }
 
 nav{
-    position: fixed;
+    
     background-color:rgb(249, 250, 248);
     display: flex;   
     bottom: 0;
@@ -30,24 +31,18 @@ nav{
    
     padding: 5px;
     margin-right: 10px;
-    
-    color: rgb(98, 89, 79);
-   
+     color: rgb(98, 89, 79);  
     margin-top: 1.5%;
     font-size: 26px;
     font-family: Arial, sans-serif;
     text-decoration: none;
 }
 
-.bouton a {
-    font-size: 24px;
-    color: rgb(233, 137, 27);
-}
-
 .txt{
     background-color: cadetblue;
     font-size: 20px;
 }
+
 .resume{
     font-size: 20px;
     background-color:rgb(249, 250, 248);
@@ -78,7 +73,6 @@ footer{
     display: flex;
 }
 
-
 .pied{
     margin-top: 35px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -87,40 +81,36 @@ footer{
     font-weight: bold;
 }
 
-.pho{
-    display: flex;
-    flex-direction: row;
-}
 .resultat{
     margin-top: 3%;
     margin-bottom:20%;
     font-size: 25px;
     color: rgb(32, 49, 78);
 }
+
 h3{
     font-weight: 500;
     font-size: 2em;
     text-align: center;
     font-family: Arial, sans-serif;
     color: rgb(245, 245, 245);
-    text-shadow: 1px 1px 2px rgb(27, 29, 29), 0 0 1em rgb(25, 29, 31), 0 0 0.2em rgb(26, 26, 39);
-
-   
+    text-shadow: 1px 1px 2px rgb(27, 29, 29), 0 0 1em rgb(25, 29, 31), 0 0 0.2em rgb(26, 26, 39); 
 }
+
 .bidule{
     position:absolute;top:100px; height:400px; z-index:2;font-size:200%
 }
+
 .dingue{
     display: flex;
     flex-direction: row;
     margin-left: 60%;
-    text-align: left;
+    text-align: center;
     font-weight: 700;
-    font-size: 30px;
+    font-size: 35px;
     color: rgb(245, 245, 245);
     text-shadow: 1px 1px 2px rgb(27, 29, 29), 0 0 1em rgb(25, 29, 31), 0 0 0.2em rgb(26, 26, 39);
-    font-family: Arial, sans-serif;
-    
+    font-family: Arial, sans-serif;   
 }
 
 .din{
@@ -128,43 +118,53 @@ h3{
     margin-top: 10%;
     margin-left: 6%;
     margin-right: 6%;
-     font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif;
     font-weight: bold;
     font-size: 35px;
     color: rgb(245, 245, 245);
     text-shadow: 1px 1px 2px rgb(27, 29, 29), 0 0 1em rgb(25, 29, 31), 0 0 0.2em rgb(26, 26, 39);
 }
-.formulaire{
-    margin-top: 3%;
-    font-weight: 800;
-    margin-left: 30%;
-    font-size: 25px;
-    color: rgb(32, 49, 78);
-    width: 100%;
-  
-}
-.formulaire input{
-   
-    margin-bottom: 3%;
-   
-    border-radius: 0;
-    font-family : inherit;
-    font-size   : 100%;
-    box-sizing: border-box;
-    vertical-align: top;  
-  
-}
-@media screen and (min-width: 800px)
+
+
+@media screen and (max-width: 700px)
+
 {
-    .formulaire input{
+    .bouton {
    
-        margin-bottom: 3%;
-       
-        border-radius: 0;
-        font-family : inherit;
-        font-size   : 100%;
-        box-sizing: border-box;
-        vertical-align: top;  
-      
-    }   
+        padding: 5px;
+        margin-right: 5px;
+        font-size: 16px; 
+    }
+
+    .dingue{
+        
+        margin-left: 40%;
+        text-align: left;  
+        font-size: 25px; 
+    }
+    
+    .din{
+        
+        font-size: 25px;
+        font-family: Arial, sans-serif;
+        color: rgb(245, 245, 245);
+        text-shadow: 1px 1px 2px rgb(27, 29, 29), 0 0 1em rgb(25, 29, 31), 0 0 0.2em rgb(26, 26, 39);    
+    }
+
+    .bidule{
+        top:70px; 
+    }
+
+    .pied{
+        margin-top: 80%;
+        margin-bottom: 5%;
+        
+    }
+    
+    .yy{
+
+        height: 70em;
+    }
+
+
 }
