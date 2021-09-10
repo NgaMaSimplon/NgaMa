@@ -11,29 +11,19 @@ header{
     grid-area: "header";
    
 }
-
-
 .titre{
-   
-    
-   
     color: rgb(98, 89, 79);
-    
     margin-left:5%;
-    
     opacity: 1;
     font-size: 26px;
     font-family: Arial, sans-serif;
-   
-   
-    
-
 }
 
 nav{
-    
+    position: fixed;
     background-color:rgb(249, 250, 248);
     display: flex;   
+    bottom: 0;
 } 
 
 .bouton {
@@ -163,4 +153,18 @@ h3{
     box-sizing: border-box;
     vertical-align: top;  
   
+}
+@media screen and (min-width: 800px)
+{
+    .formulaire input{
+   
+        margin-bottom: 3%;
+       
+        border-radius: 0;
+        font-family : inherit;
+        font-size   : 100%;
+        box-sizing: border-box;
+        vertical-align: top;  
+      
+    }   
 }

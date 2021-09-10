@@ -63,24 +63,20 @@ def predict():
     lum = int(request.form['lum'])
     date_request = request.form['date']
     cat_time = int(request.form['cat_time'])
-
+    
     #convertir le type de date
     #date = datetime.date(int(date_request[0]), int(date_request[1]), int(date_request[2]))
     date = datetime.date(int(date_request[0:4]), int(date_request[5:7]), int(date_request[8:]))
     journee = calendar.day_name[date.weekday()]
-    
-    print(date)
-   
-
-    
 
     model = load('app/static/se.joblib')
     
     prediction = model.predict([[dep,lum,agg,atm,date,cat_time, journee]])[0]
     print(prediction)
 
-    return render_template('predict.html', prediction=prediction)
-    
+    return render_template('predict.html', prediction=prediction, dep=dep, lum=lum, agg=agg, atm=atm, date=date,cat_time=cat_time, journee=journee)
+
+
 @controllers.route('/offline')
 def offline():    
     return render_template("offline.html")
