@@ -86,7 +86,7 @@ def predict():
         [[dep, lum, agg, atm, date, cat_time, journee, vacances]])[0]
     print(prediction)
 
-    return render_template('predict.html', prediction=prediction)
+    return render_template('predict.html', prediction=prediction, dep=dep, lum=lum, agg=agg, atm=atm, date=date,cat_time=cat_time, journee=journee)
 
 
 @controllers.route('/offline')

@@ -12,12 +12,13 @@
 			<div class="col-md-8">
 				<form action="{{url_for('main.predict')}}" method="post">
 					<div class="form-group row">
-					<label for="dep" class="col-sm-2 col-form-label">Votre Département </label>
-					<div class="col-sm-10">
-						<input type="number" class="form-control" id="dep"  placeholder="Département" name="dep" min="1"  required>
+						<label for="dep" class="col-sm-2 col-form-label">Votre Département </label>
+						<div class="col-sm-10">
+							<select class="form-control" id="departementId" name="dep">
+								<option disabled selected value="">Choisissez un département dans la liste</option>
+							</select>
+						</div>
 					</div>
-					</div>
-
 					<div class="form-group row">
 						<label for="atm" class="col-sm-2 col-form-label">Luminosité</label>
 						<div class="col-sm-10">
@@ -113,8 +114,23 @@
 		</div>
 	</div>
 </strong>
-	</section>
+</section>
+
+<script>
+	$.getJSON('static/donnees/departments_FR.json', function(departments){
+		if (departments === undefined || departments.length === 0) 
+			return
+		var select = document.getElementById("departementId");
+	
+		for(let dpt of departments) {
+			var option = document.createElement("option");
+			option.value = dpt.departmentCode;
+			option.innerHTML = dpt.departmentCode + " - " + dpt.departmentName  ;
+			select.appendChild(option);
+		}
+	});
+</script>
+
 {% endblock %}
 	
-
 
