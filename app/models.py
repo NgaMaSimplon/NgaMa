@@ -12,8 +12,8 @@ import pyautogui
 
 
 
-def predict(dep,agg, atm, lum, date, cat_time, journee):    
-    model = load('app/static/se.joblib')
-    secours = model.predict([[dep,agg, atm, lum, date, cat_time, journee]])
+def predict(dep,agg, atm, lum, date, cat_time, journee, vacances):    
+    model = load('app/static/pro.joblib')
+    secours = model.predict([[dep,agg, atm, lum, date, cat_time, journee, vacances]])
     return secours
 	
