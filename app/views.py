@@ -8,6 +8,8 @@ from joblib import load
 import calendar
 
 
+
+
 # C'est ici qu'on demande à notre appli flask d'acheminer toutes les demandes d'URL à la racine vers la fonction index()
 # A chaque fois qu'on ouvrira un navigateur pour accéder à l'indexe, c'est cette fonction qui sera appelé
 # @app.route est un décorateur de la varibale app qui va encapsuler la fonction index() et acheminer les demande vers cette fonction
@@ -65,12 +67,13 @@ def predict():
     lum = int(request.form['lum'])
     date_request = request.form['date']
     cat_time = int(request.form['cat_time'])
+ 
     vacances = int(request.form['vacances'])
 
   
 
     # convertir le type de date
-    
+    #date = datetime.date(int(date_request[0]), int(date_request[1]), int(date_request[2]))
     date = datetime.date(int(date_request[0:4]), int(
         date_request[5:7]), int(date_request[8:]))
     journee = calendar.day_name[date.weekday()]
@@ -83,7 +86,7 @@ def predict():
         [[dep, lum, agg, atm, date, cat_time, journee, vacances]])[0]
     print(prediction)
 
-    return render_template('predict.html', prediction=prediction, dep=dep, lum=lum, agg=agg, atm=atm, date=date,cat_time=cat_time, journee=journee)
+    return render_template('predict.html', prediction=prediction, dep=dep, lum=lum, agg=agg, atm=atm, date=date,cat_time=cat_time, journee=journee,vacances=vacances)
 
 
 @controllers.route('/offline')

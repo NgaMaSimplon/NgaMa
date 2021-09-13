@@ -80,7 +80,7 @@ footer{
     color: rgb(14, 10, 13);
     font-weight: bold;
 }
-
+/* texte page */
 .resultat{
     margin-top: 3%;
     margin-bottom:20%;
@@ -127,6 +127,7 @@ h3{
 
 
 @media screen and (max-width: 700px)
+/* responsive */
 
 {
     .bouton {
@@ -135,7 +136,7 @@ h3{
         margin-right: 5px;
         font-size: 16px; 
     }
-
+/* texte */
     .dingue{
         
         margin-left: 40%;
@@ -154,16 +155,22 @@ h3{
     .bidule{
         top:70px; 
     }
-
+    /* pied de page */
     .pied{
         margin-top: 80%;
         margin-bottom: 5%;
         
     }
-    
+    /* image page accueil */
     .yy{
 
         height: 70em;
+        width: 30em;
+    }
+    /* image des données */
+    .ya{
+
+        width: 14em;
     }
 
 
