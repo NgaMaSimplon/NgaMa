@@ -4,19 +4,100 @@
 
 <section>
 	<form class="resultat">
-		<fieldset>
-		 <legend><h3>Résultat : </h3></legend>
-		 <br>
-		<h3>Tendance du jour : {{ predict }} {{ prediction }} </h3>
-		</fieldset>
+		<div class="row mb-3">		
+			<legend><h3>RÉSULTAT</h3></legend>
+		</div>
+		<div class="container-fluid justify-content-center row">
+			<div class="col-lg-6 col-12 bg-light">
+				<div class="row p-2 ml-2 text-info">
+					<div class="col-md-4 col-sm-12 font-weight-bold">
+						Département
+					</div>
+					<div class="col-md-8 col-sm-12 "> 
+						{{dep}}
+					</div>
+				</div>
+				<div class="row p-2 ml-2 text-info">
+					<div class="col-md-4 col-sm-12 font-weight-bold ">
+						Luminosité 
+					</div>
+					<div class="col-md-8 col-sm-12">
+						{% if lum==1 %} Plein jour 
+						{%elif lum==2 %} Crépuscule ou aube
+						{%elif lum==3 %} Nuit sans éclairage public
+						{%elif lum==4 %} Nuit avec éclairage public non allumé
+						{%else %} Nuit avec éclairage public allumé 
+						{%endif %}
+					</div>
+				</div>
+				<div class="row p-2 ml-2 text-info">
+					<div class="col-md-4 col-sm-12 font-weight-bold ">
+						Localisation 
+					</div>
+					<div class="col-md-8 col-sm-12">
+						{% if lum==1 %} En agglométation {%else %} Hor agglométation {%endif %}
+					</div>
+				</div>
+				<div class="row p-2 ml-2 text-info">
+					<div class="col-md-4 col-sm-12 font-weight-bold ">
+						Atmosphère 
+					</div>
+					<div class="col-md-8 col-sm-12">
+						{% if atm==1 %} Normale 
+						{%elif atm==2 %} Pluie légère
+						{%elif atm==3 %} Pluie forte
+						{%elif atm==4 %} Neige - grêle
+						{%elif atm==5 %} Brouillard 
+						{%elif atm==6 %} Vent fort - tempête
+						{%elif atm==7 %} Temps éblouissant
+						{%elif atm==8 %} Temps couvert 
+						{%else %} Autre 
+						{%endif %}
+					</div>
+				</div>
+				<div class="row p-2 ml-2 text-info">
+					<div class="col-md-4 col-sm-12 font-weight-bold ">
+						Date 
+					</div>
+					<div class="col-md-8 col-sm-12">
+						{{ journee }} - {{ date }}
+					</div>
+				</div>
+				<div class="row p-2 ml-2 text-info"> 
+					<div class="col-md-4 col-sm-12 font-weight-bold ">
+						Moment 
+					</div>
+					<div class="col-md-8 col-sm-12 ">
+						{% if cat_time==1 %} 08:00 - 17:00 
+						{%elif cat_time==2 %} 17:00 - 20:00
+						{%elif cat_time==3 %} 20:00 - 00:00
+						{%elif cat_time==4 %} 00:00 - 05:00
+						{%else %} 05:00 - 08:00 
+						{%endif %}
+					</div>
+				</div>
+			</div>
+		<div class="col-lg-6 col-12">
+			<fieldset>
+				<h3 class="mt-5">
+					Tendance du jour :  {{ prediction }} 
+				</h3>
+				<h4 class="font-weight-bold p-3 text-center shadow-none mb-5 bg-light rounded">
+					{% if prediction==1 %}
+						<div class="text-secondary">Le niveau de Tendance est {{str_prediction}}</div>
+					{% elif prediction==2 %}
+						<div class="text-warning">Le niveau de Tendance est {{str_prediction}}</div>
+					{% else %}
+						<div class="text-danger">Le niveau de Tendance est {{str_prediction}}</div>
+					{% endif %}
+				</h4>
+			</fieldset>
+		</div>
+		<div class="row">		
+			<img class="img-fluid rounded mx-auto d-block" src="{{url_for('static', filename='img/nvsecour.jpeg')}}" alt="Image secours">
+		</div>
 	</form>
-	<br>
-		1 – Faible  
-		<br>
-		2 – Moyen 
-		<br> 
-		3 – Élevé  
-		</p>
+	
 </section>
 
 {% endblock %}

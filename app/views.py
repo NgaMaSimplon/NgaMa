@@ -84,9 +84,11 @@ def predict():
 
     prediction = model.predict(
         [[dep, lum, agg, atm, date, cat_time, journee, vacances]])[0]
-    print(prediction)
+    #print(prediction)
+    dic_prediction = {1: "Faible", 2: "Moyen", 3: "Élevé" }
+    str_prediction = dic_prediction[prediction]
 
-    return render_template('predict.html', prediction=prediction, dep=dep, lum=lum, agg=agg, atm=atm, date=date,cat_time=cat_time, journee=journee,vacances=vacances)
+    return render_template('predict.html', prediction=prediction, str_prediction=str_prediction, dep=dep, lum=lum, agg=agg, atm=atm, date=date,cat_time=cat_time, journee=journee)
 
 
 @controllers.route('/offline')
